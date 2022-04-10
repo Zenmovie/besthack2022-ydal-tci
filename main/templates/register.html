@@ -1,14 +1,8 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html lang='ru'>
-  <head>
-  <meta charset='utf8'>
-<title>Best Hack'22 || Registration</title>
-<link rel='stylesheet' href='static/style.css'>
-</head>
-
-<body>
-
+{% block content %}
+{{super() }}
+<link rel="script" href='static/js/password.js'>
 <div class='main'>
   <h1>Registration</h1>
 <form method='post' action='first.php'>
@@ -25,34 +19,24 @@
 <label>Your mail</label>
   </div>
 
-  <div class='auth'>
-<input type='password' required id='password' name='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+    <div class='auth'>
+<input type='password' required id='passwd' name='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+<input type="checkbox" onclick="myFunction()">Show Password
+
+
 <span></span>
 <label>Enter password</label>
     </div>
   <div class='auth'>
-<input type='password' required id='password1' name='password'>
+<input type='password' required id='passwd1' name='password'>
 <span></span>
 <label>Repeat password</label>
     </div>
     
-<input type='submit' value='Enter'>
-<div class='reg'> 
-  Already have an account <a href='login'>Sign in</a><br><br>
-  <span>Best Hack'22<br> Команда: Удальцы </span>
+<input type='submit' value='Submit'>
+<div class='reg'>
+  Already have an account <a href='/'>Sign in</a>
 </div>
 </form>
 </div>
-
-
-
-
-
-
-</body>
-
-
-
-
-
-</html>
+{% endblock %}

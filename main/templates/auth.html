@@ -1,13 +1,8 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 
-<html lang='ru'>
-  <head>
-  <meta charset='utf8'>
-<title>Best Hack'22 || Authorization</title>
-<link rel='stylesheet' href='static/style.css'>
-</head>
-
-<body>
+{% block content %}
+{{super() }}
+<link rel="script" href='static/js/password.js'>
 <div class='main'>
   <h1>Authorization</h1>
 <form method='post' action=''>
@@ -26,18 +21,7 @@
 <input type='submit' value='Вход'>
 <div class='reg'> 
   Don't have an account? <a href='register'>Join now</a><br><br>
-  <span>Best Hack'22 <br> Команда: Удальцы </span>
 </div>
 </form>
 </div>
-
-
-
-
-</body>
-
-
-
-
-
-</html>
+{% endblock %}
