@@ -12,9 +12,6 @@ def main_page():
 def reg_page():
     return render_template('register.html', title="Registration")
 
-@app.route('/register1')
-def register():
-    return  render_template('register1.html', title='Registration')
 
 if __name__ == "__main__":
     app.run(debug=True)
