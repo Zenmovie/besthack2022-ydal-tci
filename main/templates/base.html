@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang='ru'>
+<head>
+<meta charset='utf8'>
+{% block title -%}
+{% if title %}
+      <title>Best Hack'22 || {{title}}</title>
+{% else %}
+      <title>Best Hack'22</title>
+{% endif %}
+<link rel='stylesheet' href='static/css/style.css'>
+{% endblock %}
+</head>
+
+
+<body>
+{% block content -%}
+<div id="footer">
+    <div style='text-align:center;'>
+        <span style='color:white;'>Best Hack'22<br> Команда: Удальцы </span>
+    </div>
+</div>
+</body>
+
+</html>
+{% endblock %}
