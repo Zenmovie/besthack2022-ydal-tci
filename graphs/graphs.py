@@ -1,5 +1,3 @@
-import time
-from alpha_vantage.timeseries import TimeSeries
 from datetime import datetime
 import pandas as pd
 import yfinance as yf
