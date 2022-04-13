@@ -6,8 +6,9 @@ import plotly.graph_objects as go
 
 start = datetime.now()
 
+
 def make_candlestick(symbol: str):
-    data = yf.download(tickers=symbol, period='1d', interval='5m')
+    data = yf.download(tickers=symbol, period='1d', interval='2m')
     fig = go.Figure(data=[go.Candlestick(x=data.index,
                     open=data['Open'],
                     high=data['High'],
@@ -18,10 +19,9 @@ def make_candlestick(symbol: str):
         rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
-                dict(count=5, label="5m", step="minute", stepmode="backward"),
                 dict(count=15, label="15m", step="minute", stepmode="backward"),
-                dict(count=1, label="HTD", step="hour", stepmode="todate"),
-                dict(count=3, label="3h", step="hour", stepmode="backward"),
+                dict(count=30, label="30m", step="minute", stepmode="backward"),
+                dict(count=1, label="HTD", step="hour", stepmode="backward"),
                 dict(step="all")
             ])
         )
@@ -30,18 +30,17 @@ def make_candlestick(symbol: str):
 
 
 def make_linegraph(symbol: str):
-    data = yf.download(tickers=symbol, period='1d', interval='5m')
+    data = yf.download(tickers=symbol, period='1mo', interval='5m')
     fig = go.Figure([go.Scatter(x=data.index, y=data['Close'])])
     fig.update_layout(title=symbol)
     fig.update_xaxes(
         rangeslider_visible=True,
         rangeselector=dict(
             buttons=list([
-                dict(count=5, label="5m", step="minute", stepmode="backward"),
-                dict(count=15, label="15m", step="minute", stepmode="backward"),
-                dict(count=1, label="HTD", step="hour", stepmode="todate"),
-                dict(count=3, label="3h", step="hour", stepmode="backward"),
-                dict(step="all")
+                dict(count=1, label="1d", step="day", stepmode="backward"),
+                dict(count=7, label="7d", step="day", stepmode="backward"),
+                dict(count=21, label="21d", step="day", stepmode="backward"),
+                dict(label="1M", step="all")
             ])
         )
     )
