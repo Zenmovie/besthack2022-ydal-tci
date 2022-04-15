@@ -12,11 +12,3 @@ function show_pwd() {
         x.type = "password";
     }
 }
-function reset() {
-
-
-
-
-
-
-}

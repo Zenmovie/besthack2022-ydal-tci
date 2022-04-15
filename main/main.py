@@ -13,6 +13,9 @@ db = SQLAlchemy(app)
 def authentication_page():
     return render_template('base.html', title="Authentication")
 
+@app.route('/login')
+def login():
+    return render_template('auth.html', title='Login')
 
 @app.route('/register', methods=['GET', 'POST'])
 def registration_page():
