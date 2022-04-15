@@ -15,7 +15,7 @@ sec = URLSafeSerializer(SECRET_KEY)
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config.update(dict(DATABASE=os.path.join(app.root_path, '../project_db')))
+app.config.update(dict(DATABASE=os.path.join(app.root_path, 'project_db')))
 
 
 def connect_db():
@@ -24,12 +24,15 @@ def connect_db():
     return conn
 
 
-def create_db():
-    db = connect_db()
-    with app.open_resource('db.sqlite', mode='r') as f:
-        db.cursor().executescript(f.read())
-    db.commit()
-    db.close()
+def create_db(create: bool = False):
+    if create:
+        db = connect_db()
+        with open('db.sql', mode='r') as f:
+            db.cursor().executescript(f.read())
+        db.commit()
+        db.close()
+    else:
+        print("Fuck you")
 
 
 def get_db():
@@ -63,6 +66,7 @@ def main_page():
         res_email = dbase.Check(request.form['email'])
         res_password = dbase.CheckPass(request.form['password'], res_email)
         id = dbase.GetId(res_email)
+        # broken access
         if res_email and res_password:
             return redirect(url_for('profile', id=id))
         else:
@@ -87,8 +91,9 @@ def AddInfo():
     return render_template('register.html', title="Registration")
 
 
-@app.route('/profile/<id>', methods=["POST", "GET"])
-def profile(id):
+@app.route('/profile/<id:int>', methods=["POST", "GET"])
+def profile(id: int):
+    # TODO: sessions [jwt]
     db = get_db()
     dbase = FDatBase(db)
     if request.method == 'POST' or request.method == 'GET':
