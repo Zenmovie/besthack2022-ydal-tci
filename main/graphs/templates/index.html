@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Stock Chart</title>
+        <link rel="stylesheet" href="../style/style.css">
+        <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    </head>
+
+    <body>
+        <h1>{{ title }}</h1>
+
+        <div id="chart"></div>
+        <button onclick="get_data('MSFT')">Microsoft</button>
+        <button onclick="get_data('IBM')">IBM</button>
+        <button onclick="get_data('GOOG')">Google</button>
+        <button onclick="get_data('AAPL')">Apple</button> 
+        <button onclick="get_data('NVDA')">Nvidia</button>
+        <button onclick="get_data('BABA')">Alibaba</button>
+        <button onclick="get_data('TSM')">TSM</button>
+        <button onclick="get_data('AMZN')">Amazon</button>
+        <button onclick="get_data('JPM')">JPM</button>
+        <button onclick="get_data('TSLA')">Tesla</button>
+
+        <script src="{{ url_for('static', filename='chart.js') }}"></script>
+    </body>
+</html>
