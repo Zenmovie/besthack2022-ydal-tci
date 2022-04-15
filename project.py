@@ -8,7 +8,6 @@ from FDatBase import FDatBase
 
 
 DATABASE = '/project_db'
-DEBUG = True
 SECRET_KEY = '85d48ceca6ffa559d4998e419014cf064f0d162008c8fbc0bd126f38212c40d6'
 sec = URLSafeSerializer(SECRET_KEY)
 """login_manager = LoginManager()"""
@@ -166,4 +165,4 @@ def sell():
     if request.method == 'POST':"""
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
