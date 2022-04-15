@@ -2,7 +2,6 @@
 
 {% block content %}
 {{super() }}
-<link rel="script" href='static/js/password.js'>
 <div class='main'>
   <h1>Registration</h1>
 <form method='post' action='first.php'>
@@ -20,9 +19,9 @@
   </div>
 
     <div class='auth'>
-<input type='password' required id='passwd' name='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
-<input type="checkbox" onclick="myFunction()">Show Password
-
+<input type='password' required id='passwd' name='password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}", maxlength="10", minlength="6" required/>
+<script type="text/javascript" src="static/js/password.js"></script>
+<input type="checkbox" onclick="show_pwd()">Show Password
 
 <span></span>
 <label>Enter password</label>
@@ -35,7 +34,7 @@
     
 <input type='submit' value='Submit'>
 <div class='reg'>
-  Already have an account <a href='/'>Sign in</a>
+  Already have an account? <a href='/'>Sign in</a>
 </div>
 </form>
 </div>

@@ -1,5 +1,4 @@
-<script>
-function myFunction() {
+function show_pwd() {
     var x = document.getElementById("passwd");
     if (x.type === "password") {
         x.type = "text";
@@ -13,4 +12,11 @@ function myFunction() {
         x.type = "password";
     }
 }
-</script>
+function reset() {
+
+
+
+
+
+
+}

@@ -2,25 +2,25 @@
 
 {% block content %}
 {{super() }}
-<link rel="script" href='static/js/password.js'>
 <div class='main'>
-  <h1>Authorization</h1>
+<h1>Authorization</h1>
 <form method='post' action=''>
 <div class='auth'>
 <input type='email' required>
 <span></span>
 <label>Input your email</label>
-  </div>
-
-  <div class='auth'>
-<input type='password' required>
+</div>
+<div class='auth'>
+<input type='password' required id='passwd'>
 <span></span>
 <label>Enter your password</label>
-    </div>
-    <div class='repair'>Forgot your password?</div>
+<script type="text/javascript" src="static/js/password.js"></script>
+<input type="checkbox" onclick="show_pwd()">Show Password
+</div>
+    <a href='reset_password'>Forgot your password?</a>
 <input type='submit' value='Вход'>
-<div class='reg'> 
-  Don't have an account? <a href='register'>Join now</a><br><br>
+<div class='reg'>
+Don't have an account? <a href="register">Join now</a><br><br>
 </div>
 </form>
 </div>
