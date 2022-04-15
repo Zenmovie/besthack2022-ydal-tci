@@ -26,7 +26,7 @@ def connect_db():
 
 def create_db():
     db = connect_db()
-    with app.open_resource('main/db.sqlite', mode='r') as f:
+    with app.open_resource('db.sqlite', mode='r') as f:
         db.cursor().executescript(f.read())
     db.commit()
     db.close()
