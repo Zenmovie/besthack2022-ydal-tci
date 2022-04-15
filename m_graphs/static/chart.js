@@ -25,7 +25,6 @@ var chart = LightweightCharts.createChart(document.getElementById('chart'), {
 		secondsVisible: false,
 	},
 });
-
 var candleSeries = chart.addCandlestickSeries({
 	upColor: '#c18df8',
 	downColor: '#7b00ff',
@@ -35,7 +34,8 @@ var candleSeries = chart.addCandlestickSeries({
 	wickUpColor: 'rgb(193,141,248)',
 });
 
-fetch('http://127.0.0.1:5000/history')
+function get_data(symbol){
+	fetch(`http://127.0.0.1:5000/stocks/${symbol}`)
 	.then((r) => r.json())
 	.then(data => {
 	     const cdata = data.map(d => {
@@ -44,3 +44,6 @@ fetch('http://127.0.0.1:5000/history')
 		 console.log(cdata)
 	     candleSeries.setData(cdata);
 	   })
+}
+
+get_data('MSFT')
