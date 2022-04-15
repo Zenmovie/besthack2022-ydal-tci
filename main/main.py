@@ -3,10 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required, current_user
 import os
 main = Blueprint('main', __name__)
-app.config.update(dict(DATABASE=os.path.join(app.root_path, 'project_db')))
 SECRET_KEY = '85d48ceca6ffa559d4998e419014cf064f0d162008c8fbc0bd126f38212c40d6'
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite://///home/zenmovie/PycharmProjects/besthack2022-ydal-tci/main/db.sqlite"
+app.config.update(dict(DATABASE=os.path.join(app.root_path, 'project_db')))
 db = SQLAlchemy(app)
 
 
