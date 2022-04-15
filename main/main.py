@@ -1,21 +1,25 @@
-from flask import Blueprint, render_template, request, redirect
-from . import db
+from flask import Blueprint, render_template, request, redirect, Flask
+from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required, current_user
 
 main = Blueprint('main', __name__)
 
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite://///home/zenmovie/PycharmProjects/besthack2022-ydal-tci/main/db.sqlite"
+db = SQLAlchemy(app)
 
-@main.route('/')
+
+@app.route('/')
 def authentication_page():
     return render_template('base.html', title="Authentication")
 
 
-@main.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET', 'POST'])
 def registration_page():
     return render_template('register.html', title="Registration")
 
 
-@main.route('/reset_password')
+@app.route('/reset_password')
 @login_required
 def reset_password():
     return render_template('reset.html', title="Reset password")
