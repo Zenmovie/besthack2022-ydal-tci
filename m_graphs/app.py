@@ -12,15 +12,17 @@ td = TDClient("32d5929173a54fa6a74c215aac19b23e")
 def get_stock_data(symbol: str, interval: str) -> json:
 
     def json_date(time: str):
-        date_time = datetime.strptime(time, '%Y-%m-%d %H:%M:%S')
+        try:
+            date_time = datetime.strptime(time, '%Y-%m-%d %H:%M:%S')
+        except ValueError:
+            date_time = datetime.strptime(time, '%Y-%m-%d')
         epoch = datetime.utcfromtimestamp(0)
         return (date_time - epoch).total_seconds()
-
 
     candlesticks = td.time_series(
         symbol=symbol,
         interval=interval,
-        outputsize=100,
+        outputsize=500,
         timezone="Europe/Moscow"
     ).as_json()
 
@@ -47,4 +49,4 @@ def index():
 
 @app.route('/stocks/<symbol>')
 def history(symbol):
-    return get_stock_data(symbol, '5min')
+    return get_stock_data(symbol, '1day')
