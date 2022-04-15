@@ -153,6 +153,12 @@ def logout():
     session.clear()
     return redirect('/')
 
+
+@app.errorhandler(404)
+def page_not_found():
+    return render_template('404.html'), 404
+
+
 """@app.route('/sell', methods=['POST', 'GET'])
 @login_required
 def sell():

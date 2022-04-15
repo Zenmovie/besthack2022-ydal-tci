@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required, current_user
-
+import os
 main = Blueprint('main', __name__)
-
+print(os.path.join(abspath()))
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite://///home/zenmovie/PycharmProjects/besthack2022-ydal-tci/main/db.sqlite"
 db = SQLAlchemy(app)
