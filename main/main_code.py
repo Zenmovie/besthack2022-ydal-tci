@@ -6,12 +6,10 @@ from itsdangerous import URLSafeSerializer
 from werkzeug.utils import redirect
 from FDatBase import FDatBase
 
-
 DATABASE = '/project_db'
 SECRET_KEY = '85d48ceca6ffa559d4998e419014cf064f0d162008c8fbc0bd126f38212c40d6'
 sec = URLSafeSerializer(SECRET_KEY)
 """login_manager = LoginManager()"""
-
 
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -53,6 +51,7 @@ def login_required(f):
         if session.get("user_id") is None:
             return redirect(url_for('main_page'))
         return f(*args, **kwargs)
+
     return decorated_function
 
 
@@ -72,7 +71,18 @@ def main_page():
         else:
             flash("Please, try again")
             return redirect(url_for('main_page'))
-    return render_template('auth.html')
+    return render_template('index_en')
+
+
+@app.route('/index', methods=["POST", "GET"])
+def main_index():
+    session.clear()
+    db = get_db()
+    dbase = FDatBase(db)
+
+    if request.method == "POST":
+        return redirect(render_template('auth.html'))
+    return render_template('index')
 
 
 @app.route('/register', methods=["POST", "GET"])
@@ -87,13 +97,12 @@ def AddInfo():
             return redirect(url_for('register'))
         else:
             flash('Your information is submitted successfully! You can now log in into your account!')
-            return redirect(url_for('main_page'))
+            return redirect(render_template('index'))
     return render_template('register.html', title="Registration")
 
 
-@app.route('/profile/<id:int>', methods=["POST", "GET"])
-def profile(id: int):
-    # TODO: sessions [jwt]
+@app.route('/profile/<id>', methods=["POST", "GET"])
+def profile(id):
     db = get_db()
     dbase = FDatBase(db)
     if request.method == 'POST' or request.method == 'GET':
@@ -170,4 +179,4 @@ def sell():
     if request.method == 'POST':"""
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
