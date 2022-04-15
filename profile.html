@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="profile">
+    <h1>PERSONAL PROFILE</h1>
+    <h3>your current balance is {{ balance }}</h3>
+        <ap href="/balance"><lab> refill balance </lab></ap>
+    {% for s in stocks %}
+        <h2>
+            {{s}}
+        </h2>
+    {% endfor %}
+
+</div>
+{% endblock %}
